@@ -1,157 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>POWER TO THE PLAYERS — An Unofficial GME Fan Site</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<title>GME Tracker — GameStop Fan Site</title>
+<meta name="description" content="Unofficial GameStop (NYSE: GME) fan site and tracker: price, chart, key stats, history and links.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 </head>
 <body>
-<div class="scanlines" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
 
 <header class="nav">
-  <a class="brand" href="#top"><span class="pix">GME</span><span class="brand-sub">FAN&nbsp;CLUB</span></a>
+  <a class="brand" href="#top"><span class="brand-mark">GME</span><span class="brand-sub">tracker</span></a>
   <nav>
-    <a href="#history">History</a>
-    <a href="#stats">Stats</a>
-    <a href="#launch">Launch</a>
+    <a href="#price">Price</a><a href="#stats">Stats</a><a href="#about">About</a><a href="#history">History</a><a href="#links">Links</a>
   </nav>
 </header>
 
 <main id="top">
-  <!-- HERO -->
   <section class="hero">
-    <div class="stars" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="eyebrow pix">PLAYER 1 - READY</p>
-      <h1>Power to the<br><span class="red">Players.</span></h1>
-      <p class="lede">A love letter to the little game store that became the most talked-about stock on the planet. Press start, hold tight, and keep those hands 💎.</p>
-      <div class="cta">
-        <a class="btn btn-red" href="#launch">🚀 Launch the rocket</a>
-        <a class="btn btn-ghost" href="#history">Read the lore</a>
+    <div class="hero-copy">
+      <p class="eyebrow">NYSE: GME · Unofficial fan site</p>
+      <h1>Power to the<br><span class="red">players.</span></h1>
+      <p class="lead">A no-hype dashboard for GameStop Corp. — live price, real filings data, and the story so far. Sources cited, numbers never invented.</p>
+      <div class="hero-ticker" id="heroTicker">
+        <span class="ht-sym">GME</span>
+        <span class="ht-price" id="heroPrice">—</span>
+        <span class="ht-chg" id="heroChg">loading…</span>
       </div>
-      <ul class="badges">
-        <li>💎 Diamond Hands</li><li>🦍 Apes Together</li><li>🎮 Est. Retail</li><li>🌕 Moon-Bound</li>
-      </ul>
+      <div class="cta">
+        <a class="btn btn-red" href="#price">View chart</a>
+        <a class="btn btn-ghost" href="https://investor.gamestop.com/" target="_blank" rel="noopener">Investor Relations ↗</a>
+      </div>
     </div>
     <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 200 260" class="hero-rocket">
-        <defs>
-          <linearGradient id="body" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#cfcfcf"/></linearGradient>
-        </defs>
-        <path d="M100 10 C140 50 150 110 140 170 L60 170 C50 110 60 50 100 10Z" fill="url(#body)" stroke="#111" stroke-width="4"/>
-        <circle cx="100" cy="85" r="20" fill="#111" stroke="#e31b23" stroke-width="6"/>
-        <circle cx="94" cy="79" r="5" fill="#fff" opacity=".7"/>
-        <path d="M60 130 L30 185 L62 172Z" fill="#e31b23" stroke="#111" stroke-width="4"/>
-        <path d="M140 130 L170 185 L138 172Z" fill="#e31b23" stroke="#111" stroke-width="4"/>
-        <rect x="70" y="168" width="60" height="14" rx="3" fill="#111"/>
-        <text x="100" y="140" text-anchor="middle" font-family="'Press Start 2P',monospace" font-size="14" fill="#e31b23">GME</text>
-        <g class="flame">
-          <path d="M78 184 Q100 260 122 184Z" fill="#ffb400"/>
-          <path d="M88 184 Q100 235 112 184Z" fill="#e31b23"/>
-        </g>
-      </svg>
-      <div class="moon">🌕</div>
+      <div class="moon"><span class="crater c1"></span><span class="crater c2"></span><span class="crater c3"></span></div>
+      <div class="orbit"><div class="rocket">🚀</div></div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="track">
-      <span>HODL ✦ BUY THE GAME, NOT THE HYPE ✦ 💎🙌 ✦ PRESS START ✦ GG NO RE ✦ TO THE MOON 🚀 ✦ INSERT COIN ✦ HODL ✦ BUY THE GAME, NOT THE HYPE ✦ 💎🙌 ✦ PRESS START ✦ GG NO RE ✦ TO THE MOON 🚀 ✦ INSERT COIN ✦&nbsp;</span>
+  <section id="price" class="section">
+    <div class="section-head">
+      <h2>Price</h2>
+      <p class="muted" id="priceStatus">Fetching quote…</p>
     </div>
-  </div>
-
-  <!-- HISTORY -->
-  <section id="history" class="section">
-    <h2 class="sec-title"><span class="pix lvl">LVL 1</span> The Lore</h2>
-    <div class="eras">
-      <article class="era">
-        <div class="era-tag pix">WORLD 1-1</div>
-        <h3>From Babbage's to the Big Board</h3>
-        <p>GameStop's roots trace back to Babbage's, a Dallas software retailer founded in 1984. Barnes &amp; Noble bought the chain in 1999 and renamed it GameStop. The company went public on the NYSE as <strong>GME</strong> in February 2002, and Barnes &amp; Noble spun off its remaining stake to shareholders in 2004. A year later GameStop bought rival Electronics Boutique and became the world's biggest video-game retailer.</p>
-      </article>
-      <article class="era">
-        <div class="era-tag pix">WORLD 2-1</div>
-        <h3>The 2021 Short Squeeze</h3>
-        <ol class="timeline">
-          <li><b>Aug 2020</b> Ryan Cohen's RC Ventures discloses a ~10% stake.</li>
-          <li><b>Jan 11, 2021</b> Cohen and two allies join the board. Retail traders on Reddit's r/wallstreetbets pile in.</li>
-          <li><b>Late Jan 2021</b> Heavily shorted shares rocket. Short sellers take huge losses and the stock hits an intraday high near $483 on Jan 28 (pre-split).</li>
-          <li><b>Jan 28, 2021</b> Robinhood and other brokers limit buying, which sparks public outrage.</li>
-          <li><b>Feb 18, 2021</b> Congress holds hearings on the frenzy.</li>
-        </ol>
-      </article>
-      <article class="era">
-        <div class="era-tag pix">WORLD 3-1</div>
-        <h3>The Ryan Cohen Era</h3>
-        <p>Cohen co-founded Chewy. He became GameStop's chairman in June 2021 and its CEO in September 2023. Under him the company cut costs and closed stores, built up a large cash pile, and did a <strong>4-for-1 stock split</strong> in July 2022. Its devoted retail base has stayed one of the most famous in market history.</p>
-      </article>
+    <div class="card price-card">
+      <div class="price-top">
+        <div>
+          <div class="label">GameStop Corp. · NYSE</div>
+          <div class="price-big" id="priceVal">—</div>
+          <div class="chg" id="chg">&nbsp;</div>
+        </div>
+        <div class="ranges" role="tablist" aria-label="Chart range">
+          <button data-range="1d">1D</button><button data-range="5d">5D</button><button data-range="1mo">1M</button><button data-range="6mo" class="active">6M</button><button data-range="1y">1Y</button><button data-range="5y">5Y</button><button data-range="max">MAX</button>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chartWrap">
+        <svg id="chart" viewBox="0 0 1000 320" preserveAspectRatio="none" role="img" aria-label="GME price chart"></svg>
+        <div class="chart-tip" id="tip" hidden></div>
+        <div class="chart-msg" id="chartMsg">Loading chart…</div>
+      </div>
+      <div class="mini-stats">
+        <div><span class="label">Day range</span><span class="mono" id="dayRange">—</span></div>
+        <div><span class="label">52-wk range</span><span class="mono" id="wkRange">—</span></div>
+        <div><span class="label">Volume</span><span class="mono" id="vol">—</span></div>
+        <div><span class="label">Prev close</span><span class="mono" id="prevClose">—</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- STATS -->
-  <section id="stats" class="section dark">
-    <h2 class="sec-title"><span class="pix lvl">LVL 2</span> Stats Panel</h2>
+  <section id="stats" class="section">
+    <div class="section-head">
+      <h2>Key stats</h2>
+      <p class="muted">Every figure links to where it came from. If a source fails, you'll see “unavailable” — not a made-up number.</p>
+    </div>
     <div class="stats-grid">
-      <div class="card ticker">
-        <div class="card-head">
-          <span class="sym pix">GME</span>
-          <span class="label-example">EXAMPLE DATA</span>
-        </div>
-        <div class="price"><span id="px">$23.98</span> <span id="chg" class="up">+0.00%</span></div>
-        <svg class="spark" viewBox="0 0 300 80" preserveAspectRatio="none"><polyline id="sparkline" fill="none" stroke="#e31b23" stroke-width="3" points=""/></svg>
-        <p class="fine">The price movement is simulated for show and isn't a live quote. It starts from the Sep 28, 2026 close of $23.98.</p>
+      <div class="card stat">
+        <span class="label">Market cap <em>(computed)</em></span>
+        <span class="stat-val" id="mcap">loading…</span>
+        <span class="src" id="mcapSrc">Price × SEC-reported shares outstanding</span>
       </div>
-      <div class="card si">
-        <div class="card-head">
-          <span class="pix">SHORT INTEREST</span>
-          <span class="label-real">LATEST PRINT</span>
-        </div>
-        <div class="si-grid">
-          <div><span class="big">39.07M</span><span class="cap">Shares short</span></div>
-          <div><span class="big">8.4%</span><span class="cap">of float</span></div>
-          <div><span class="big">4.29</span><span class="cap">Days to cover</span></div>
-        </div>
-        <div class="meter" aria-label="8.4% of float short"><div class="fill" style="width:8.4%"></div></div>
-        <p class="fine">Settlement date Sep 15, 2026. Source: FINRA via Stocknear. Short interest data runs about two weeks behind the settlement date.</p>
+      <div class="card stat">
+        <span class="label">Shares outstanding</span>
+        <span class="stat-val" id="shares">loading…</span>
+        <span class="src" id="sharesSrc">SEC EDGAR</span>
       </div>
-      <div class="card hp">
-        <div class="card-head"><span class="pix">HODL HP</span></div>
-        <div class="hpbar"><div class="hpfill"></div></div>
-        <p class="fine">Hand strength: <b>💎 DIAMOND</b>. Paper hands not detected.</p>
+      <div class="card stat">
+        <span class="label">Short interest</span>
+        <span class="stat-val" id="si">loading…</span>
+        <span class="src" id="siSrc">FINRA</span>
+      </div>
+      <div class="card stat">
+        <span class="label">Short % of shares out <em>(computed)</em></span>
+        <span class="stat-val" id="siPct">loading…</span>
+        <span class="src" id="siPctSrc">FINRA short ÷ SEC shares</span>
+      </div>
+      <div class="card stat">
+        <span class="label">Days to cover</span>
+        <span class="stat-val" id="dtc">loading…</span>
+        <span class="src" id="dtcSrc">FINRA</span>
+      </div>
+      <div class="card stat si-trend">
+        <span class="label">Short interest trend</span>
+        <div class="bars" id="siBars"></div>
+        <span class="src">Twice-monthly FINRA settlement dates</span>
       </div>
     </div>
   </section>
 
-  <!-- INTERACTIVE -->
-  <section id="launch" class="section">
-    <h2 class="sec-title"><span class="pix lvl">LVL 3</span> Mission Control</h2>
-    <div class="launchpad">
-      <div class="sky" id="sky">
-        <div class="pad-moon">🌕</div>
-        <div class="rocket" id="rocket">🚀</div>
-        <div class="ground"></div>
+  <section id="about" class="section about">
+    <div class="section-head"><h2>The company</h2></div>
+    <div class="about-grid">
+      <div class="card">
+        <p><strong>GameStop Corp.</strong> is a Grapevine, Texas–based specialty retailer of video games, gaming hardware, accessories, and collectibles, operating stores and e-commerce in the United States and several international markets. Its roots trace to Babbage's, a Dallas software retailer founded in 1984; the company went public on the NYSE in February 2002.</p>
+        <p>Since 2021, under a board and later CEO led by Ryan Cohen, GameStop has focused on cost cutting, closing underperforming stores, building a large cash position through at-the-market equity offerings, and — from 2025 — adding bitcoin as a treasury reserve asset. Brands include GameStop, EB Games, and Game Informer (the magazine shut down in 2024).</p>
       </div>
-      <div class="controls">
-        <p class="pix counter-label">DIAMOND HANDS</p>
-        <div class="counter" id="counter">0</div>
-        <button class="btn btn-red big-btn" id="hodl">💎🙌 HODL</button>
-        <button class="btn btn-ghost" id="launchBtn">🚀 Launch</button>
-        <p class="fine" id="status">Every 10 HODLs fuels a launch. Your count is saved in this browser.</p>
+      <div class="card facts">
+        <dl>
+          <dt>Ticker</dt><dd>GME (NYSE)</dd>
+          <dt>HQ</dt><dd>Grapevine, Texas</dd>
+          <dt>Fiscal year end</dt><dd>Saturday closest to Jan 31</dd>
+          <dt>CEO / Chairman</dt><dd>Ryan Cohen</dd>
+          <dt>SEC CIK</dt><dd><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001326380" target="_blank" rel="noopener">0001326380</a></dd>
+        </dl>
       </div>
+    </div>
+  </section>
+
+  <section id="history" class="section">
+    <div class="section-head"><h2>The story so far</h2></div>
+    <ol class="timeline">
+      <li><time>1984</time><h3>Babbage's opens in Dallas</h3><p>The software retailer that eventually becomes GameStop is founded by James McCurley and Gary Kusin.</p></li>
+      <li><time>Feb 2002</time><h3>IPO on the NYSE</h3><p>GameStop is spun out of Barnes &amp; Noble's control and lists under the ticker GME.</p></li>
+      <li><time>2005</time><h3>Electronics Boutique acquired</h3><p>The merger makes GameStop the largest dedicated video-game retailer, adding the EB Games brand.</p></li>
+      <li><time>Aug 2020</time><h3>Ryan Cohen takes a stake</h3><p>The Chewy co-founder's RC Ventures discloses a roughly 10% position and starts pushing for a digital pivot.</p></li>
+      <li class="hl"><time>Jan 2021</time><h3>The short squeeze</h3><p>Cohen and two allies join the board (Jan 11). Retail buying, much of it organized on Reddit's r/wallstreetbets, collides with heavy short interest. On Jan 28 GME hits an intraday high of $483 (pre-split), and several brokers, including Robinhood, restrict buying.</p></li>
+      <li><time>Feb 2021</time><h3>Congress holds hearings</h3><p>The House Financial Services Committee questions Robinhood, Citadel, Melvin Capital, Reddit and Keith Gill (“Roaring Kitty”).</p></li>
+      <li><time>Jun 2021</time><h3>Cohen becomes Chairman</h3><p>The board turns over and the company shifts toward e-commerce and cost discipline.</p></li>
+      <li><time>Oct 2021</time><h3>SEC staff report</h3><p>The SEC publishes its staff report on equity and options market structure during the early-2021 meme-stock episode.</p></li>
+      <li><time>Jul 2022</time><h3>4-for-1 stock split</h3><p>Done as a stock dividend; pre-split prices divide by four (so $483 ≈ $120.75 split-adjusted).</p></li>
+      <li><time>Sep 2023</time><h3>Cohen named CEO</h3><p>Ryan Cohen adds president and CEO to his Chairman role.</p></li>
+      <li><time>May–Jun 2024</time><h3>Roaring Kitty returns</h3><p>Keith Gill's return to social media sparks another surge; GameStop raises billions through at-the-market share sales.</p></li>
+      <li><time>Mar 2025</time><h3>Bitcoin treasury</h3><p>The board approves bitcoin as a treasury reserve asset, financed in part by convertible note offerings.</p></li>
+    </ol>
+  </section>
+
+  <section id="links" class="section">
+    <div class="section-head"><h2>Primary sources</h2><p class="muted">Go to the source. Latest SEC filings load live below.</p></div>
+    <div class="links-grid">
+      <a class="card link" href="https://investor.gamestop.com/" target="_blank" rel="noopener"><span class="link-ico">📈</span><span><strong>GameStop Investor Relations</strong><small>Earnings, press releases, annual meeting</small></span></a>
+      <a class="card link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001326380&type=&dateb=&owner=include&count=40" target="_blank" rel="noopener"><span class="link-ico">🏛️</span><span><strong>SEC EDGAR filings</strong><small>10-K, 10-Q, 8-K, Form 4 insider trades</small></span></a>
+      <a class="card link" href="https://www.finra.org/finra-data/browse-catalog/equity-short-interest/data" target="_blank" rel="noopener"><span class="link-ico">📉</span><span><strong>FINRA short interest</strong><small>Twice-monthly equity short interest data</small></span></a>
+      <a class="card link" href="https://www.nyse.com/quote/XNYS:GME" target="_blank" rel="noopener"><span class="link-ico">🔔</span><span><strong>NYSE quote page</strong><small>Official exchange listing</small></span></a>
+      <a class="card link" href="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf" target="_blank" rel="noopener"><span class="link-ico">📄</span><span><strong>SEC 2021 staff report</strong><small>Market structure in early 2021 (PDF)</small></span></a>
+      <a class="card link" href="https://news.gamestop.com/" target="_blank" rel="noopener"><span class="link-ico">📰</span><span><strong>GameStop newsroom</strong><small>Official company news</small></span></a>
+    </div>
+    <div class="card filings">
+      <div class="filings-head"><h3>Recent SEC filings</h3><span class="muted" id="filingsStatus">loading…</span></div>
+      <ul id="filings"></ul>
     </div>
   </section>
 </main>
 
-<footer>
-  <p class="pix">GAME OVER? NEVER. &gt; CONTINUE?</p>
-  <p class="disclaimer">This is an unofficial fan site. It isn't affiliated with, endorsed by, or sponsored by GameStop Corp. Nothing here is financial advice. Data is for illustration only. Do your own research.</p>
+<footer class="footer">
+  <div class="footer-brand"><span class="brand-mark">GME</span> fan tracker</div>
+  <p class="disclaimer"><strong>Not financial advice.</strong> This is an unofficial fan site with no affiliation to GameStop Corp. Data may be delayed, incomplete, or wrong; quotes come from Yahoo Finance's public chart feed, shares outstanding from SEC EDGAR, and short interest from FINRA. Do your own research and consult a licensed professional before investing.</p>
+  <p class="muted small" id="dataStamp"></p>
 </footer>
 
-<script src="app.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

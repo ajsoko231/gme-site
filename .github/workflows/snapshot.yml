@@ -1,0 +1,41 @@
+name: Refresh data snapshot
+
+on:
+  schedule:
+    # Every 30 min, 13:00–21:59 UTC Mon–Fri (covers 9:30–16:00 ET in both EDT and EST)
+    - cron: "*/30 13-21 * * 1-5"
+    # Once daily after the close / on weekends (23:15 UTC)
+    - cron: "15 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch Yahoo / SEC EDGAR / FINRA data
+        env:
+          # SEC requires "Name email" contact info. Set a repo variable SEC_USER_AGENT to your own;
+          # otherwise serve.py falls back to a placeholder.
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT }}
+        run: python3 snapshot.py
+      - name: Commit data.json if changed
+        run: |
+          if git diff --quiet -- data.json; then echo "No changes"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "chore: refresh data snapshot [$(date -u +%Y-%m-%dT%H:%MZ)]"
+          git pull --rebase --autostash || true
+          git push
